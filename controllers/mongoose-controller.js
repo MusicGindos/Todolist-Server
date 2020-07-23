@@ -25,11 +25,6 @@ class MongooseController{
 		 	dueDate: request.body.dueDate,
 		 	comments: request.body.comments
 		});
-		var res = task.save();
-		if(res){
-			var notifyController = new NotifyController();
-			notifyController.notifyAsignee(res);
-		}
 		return task.save();
 	}
 
@@ -78,4 +73,4 @@ class MongooseController{
 	}
 }
 
-module.exports = MongooseController ;
+module.exports = MongooseController;

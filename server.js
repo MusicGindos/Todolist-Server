@@ -1,7 +1,10 @@
 const express = require('express');
+var cors = require('cors');
 const app = express();
+app.use(cors());
 const port = 4000;
 const MongooseController = require("./controllers/mongoose-controller");
+var controller = new MongooseController();
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({ extended: true }));  // to support URL-encoded bodies
@@ -9,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));  // to support URL-encoded b
 app.get('/', function(request,response){ // All tasks
 	response.send('Hello World!')
 });
- 
+
 app.post('/createTask', function(request,response){
 	var controller = new MongooseController();
 	var res = controller.createTask(request, response);
